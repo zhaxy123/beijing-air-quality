@@ -1,7 +1,8 @@
-streamlit>=1.28.0
-folium>=0.14.0
-pandas>=2.0.0
-streamlit-folium>=0.15.0
-pyarrow>=14.0.0
-numpy>=1.24.0
+folium
+streamlit
+pandas
+streamlit-folium
+pyarrow
+numpy
+
 
