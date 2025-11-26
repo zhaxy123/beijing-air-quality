@@ -1,6 +1,6 @@
-streamlit==1.51.0
-folium==0.14.0
-pandas==2.3.3
-streamlit-folium==0.25.2
-pyarrow==21.0.0
-numpy==1.26.2
+streamlit
+folium
+pandas
+streamlit-folium
+pyarrow
+numpy
