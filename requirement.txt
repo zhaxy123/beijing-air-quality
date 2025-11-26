@@ -1,8 +1,0 @@
-folium
-streamlit
-pandas
-streamlit-folium
-pyarrow
-numpy
-
-
