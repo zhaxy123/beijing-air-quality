@@ -361,7 +361,7 @@ def main():
         # 时间选择
         datetime_input = st.text_input(
         "输入日期时间 (格式: 2025110120)",
-        value=f"{app.available_dates[-1].replace('-', '')}{app.available_hours[-1]:02d}" if app.available_dates and app.available_hours else "2025110100",
+        value=f"{app.available_dates[-1].replace('-', '')}{app.available_hours[-1]:02d}" if app.available_dates and app.available_hours else "2025110523",
         help="数据范围[2022-01-01 - 2025-11-05]"
         )
             
@@ -377,16 +377,16 @@ def main():
                     selected_hour = input_hour
                 else:
                     st.warning("输入的日期时间不在数据范围内，使用默认时间")
-                    selected_date = app.available_dates[-1] if app.available_dates else "2025-11-01"
-                    selected_hour = app.available_hours[-1] if app.available_hours else 0                
+                    selected_date = app.available_dates[-1] if app.available_dates else "2025-11-05"
+                    selected_hour = app.available_hours[-1] if app.available_hours else 23                
             except:
                 st.warning("日期时间格式错误，使用默认时间")
-                selected_date = app.available_dates[-1] if app.available_dates else "2025-11-01"
-                selected_hour = app.available_hours[-1] if app.available_hours else 0
+                selected_date = app.available_dates[-1] if app.available_dates else "2025-11-05"
+                selected_hour = app.available_hours[-1] if app.available_hours else 23
         else:
             # 默认使用最新时间
-            selected_date = app.available_dates[-1] if app.available_dates else "2025-11-01"
-            selected_hour = app.available_hours[-1] if app.available_hours else 0
+            selected_date = app.available_dates[-1] if app.available_dates else "2025-11-05"
+            selected_hour = app.available_hours[-1] if app.available_hours else 23
         
         
         regions = ['全部', '城六区', '西北部', '东北部', '东南部', '西南部']
@@ -549,4 +549,5 @@ def main():
     
     
 if __name__ == "__main__":
+
     main()
