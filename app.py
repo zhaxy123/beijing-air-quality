@@ -292,8 +292,8 @@ class BeijingAirQualityStreamlitApp:
             html_content = f"""
             <div style="
                 background-color: {color};
-                width: 12px;
-                height: 12px;
+                width: 15px;
+                height: 15px;
                 border: 1px solid white;
                 border-radius: 50%;
                 box-shadow: 0 0 8px rgba(0,0,0,0.6);
@@ -592,6 +592,7 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
 
 
