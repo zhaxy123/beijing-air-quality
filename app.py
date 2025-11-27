@@ -273,14 +273,55 @@ class BeijingAirQualityStreamlitApp:
             
             color = self.get_aqi_color(aqi_value)
             
-            folium.CircleMarker(
-                location=[row['lat'], row['lon']],
-                radius=8,
-                popup=f"<b>{station_name}</b><br>区域: {station_region}<br>时间: {selected_date} {selected_hour}:00<br>AQI: {aqi_value}<br>等级: {aqi_level}",
-                tooltip=f"{station_name} - AQI: {aqi_value}",
-                color=color, fill=True, fillColor=color, fillOpacity=0.7, weight=2
+            # 使用自定义标记方法
+            self.create_custom_marker(
+                map_obj, 
+                row['lat'], 
+                row['lon'], 
+                color, 
+                station_name, 
+                row['region'], 
+                selected_date, 
+                selected_hour, 
+                aqi_value, 
+                aqi_level
+            )
+            
+    def create_custom_marker(self, map_obj, lat, lon, color, station_name, station_region, selected_date, selected_hour, aqi_value, aqi_level):
+            """创建自定义标记"""
+            html_content = f"""
+            <div style="
+                background-color: {color};
+                width: 12px;
+                height: 12px;
+                border: 1px solid white;
+                border-radius: 50%;
+                box-shadow: 0 0 8px rgba(0,0,0,0.6);
+            "></div>
+            """
+            
+            # 创建弹出内容
+            popup_content = f"""
+            <div style="font-size: 11px; line-height: 1.2;">
+                <b>{station_name}</b><br>
+                区域: {station_region}<br>
+                时间: {selected_date} {selected_hour}:00<br>
+                AQI: {aqi_value}<br>
+                等级: {aqi_level}
+            </div>
+            """
+            
+            folium.Marker(
+                location=[lat, lon],
+                icon=folium.DivIcon(
+                    html=html_content,
+                    icon_size=(20, 20),
+                    icon_anchor=(10, 10)
+                ),
+                popup=folium.Popup(popup_content, max_width=180),
+                tooltip=f"{station_name} - AQI: {aqi_value}"
             ).add_to(map_obj)
-
+        
     def create_filtered_map(self, selected_date, selected_hour, selected_levels, selected_regions):
         map_obj = self.create_base_map(selected_regions)
         self.add_station_markers(map_obj, selected_levels, selected_regions, selected_date, selected_hour)
@@ -551,6 +592,7 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
 
 
