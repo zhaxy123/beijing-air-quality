@@ -351,7 +351,7 @@ def main():
         st.session_state.animation_data = None
     
     if 'app' not in st.session_state:
-        st.session_state.app = BeijingAirQualityStreamlitApp('./aqi_hourly.csv')
+        st.session_state.app = BeijingAirQualityStreamlitApp('project_data/aqi_hourly.csv')
     
     app = st.session_state.app
     
@@ -551,4 +551,5 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
