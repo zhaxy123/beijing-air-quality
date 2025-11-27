@@ -51,6 +51,7 @@ class BeijingAirQualityStreamlitApp:
             encodings = ['gbk', 'gb2312', 'utf-8', 'latin1', 'iso-8859-1']
             for encoding in encodings:
                 try:
+                    print(self.hourly_data_path)
                     self.df_hourly = pd.read_csv(self.hourly_data_path, encoding=encoding)
                     self.preprocess_data()
                     break
@@ -551,5 +552,6 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
 
